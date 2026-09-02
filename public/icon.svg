@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="rkgitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#dc2626" />
+      <stop offset="50%" stop-color="#b91c1c" />
+      <stop offset="100%" stop-color="#991b1b" />
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="dropGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#dc2626" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <!-- Background rounded squircle -->
+  <rect width="512" height="512" rx="112" fill="url(#shieldGrad)" />
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="none" stroke="#334155" stroke-width="4" stroke-dasharray="8 8" opacity="0.4"/>
+  
+  <!-- Outer glowing shield -->
+  <path d="M256 64 L416 128 C416 288 340 392 256 448 C172 392 96 288 96 128 Z" fill="url(#rkgitGrad)" filter="url(#dropGlow)" />
+  
+  <!-- Inner dark badge -->
+  <path d="M256 96 L384 148 C384 276 324 360 256 408 C188 360 128 276 128 148 Z" fill="#0f172a" />
+  
+  <!-- First Aid Medical Cross -->
+  <path d="M226 180 H286 V226 H332 V286 H286 V332 H226 V286 H180 V226 H226 Z" fill="#ffffff" />
+  
+  <!-- Pulse / ECG wave overlay on cross -->
+  <path d="M190 256 L220 256 L235 220 L256 295 L275 235 L290 256 L322 256" fill="none" stroke="#dc2626" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- RKGIT Text badge -->
+  <rect x="166" y="370" width="180" height="34" rx="8" fill="#e2e8f0"/>
+  <text x="256" y="393" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="900" fill="#0f172a" text-anchor="middle" letter-spacing="2">RKGIT SAFE</text>
+</svg>

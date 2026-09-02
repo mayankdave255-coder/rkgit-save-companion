@@ -1,0 +1,7 @@
+{
+  "name": "RKGIT Safe Companion",
+  "description": "Progressive Web App (PWA) with Gemini AI first-aid triage, voice input, live-location SOS alerts, on-device incident history, English/Hindi multilingual safety support & translation, and RKGIT campus emergency quick-dial.",
+  "requestFramePermissions": ["camera", "microphone", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
