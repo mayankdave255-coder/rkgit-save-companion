@@ -260,6 +260,7 @@ export function createApp(options: CreateAppOptions = {}): Express {
 
       if (!hasApiKey()) {
         // Return structured fallback response for offline/dev test if API key is not configured
+        res.set('X-Triage-Source', 'server-fallback');
         res.json(buildOfflineFallbackTriage(text));
         return;
       }
@@ -305,6 +306,7 @@ export function createApp(options: CreateAppOptions = {}): Express {
       }
 
       const parsedData = JSON.parse(responseText.trim());
+      res.set('X-Triage-Source', 'gemini');
       res.json(parsedData);
     } catch (err: unknown) {
       const error = err as Error;

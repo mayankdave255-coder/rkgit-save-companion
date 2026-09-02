@@ -22,7 +22,7 @@ export function findOfflineMatch(text: string, location: string): TriageResult {
     guide = OFFLINE_FIRST_AID_GUIDES.find((g) => g.id === 'burns-chemical') || guide;
   } else if (q.includes('bleed') || q.includes('cut') || q.includes('blood') || q.includes('खून') || q.includes('घाव')) {
     guide = OFFLINE_FIRST_AID_GUIDES.find((g) => g.id === 'severe-bleeding') || guide;
-  } else if (q.includes('fracture') || q.includes('sprain') || q.includes('bone') || q.includes('मोच') || q.includes('हड्डी')) {
+  } else if (q.includes('fracture') || q.includes('sprain') || q.includes('bone') || q.includes('crush') || q.includes('smash') || q.includes('मोच') || q.includes('हड्डी') || q.includes('कुचल')) {
     guide = OFFLINE_FIRST_AID_GUIDES.find((g) => g.id === 'fracture-sprain') || guide;
   } else if (q.includes('heat') || q.includes('faint') || q.includes('dizzy') || q.includes('धूप') || q.includes('चक्कर') || q.includes('बेहोश')) {
     guide = OFFLINE_FIRST_AID_GUIDES.find((g) => g.id === 'heat-exhaustion') || guide;

@@ -32,6 +32,7 @@ export default function App() {
   const [attachedImage, setAttachedImage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [triageResult, setTriageResult] = useState<TriageResult | null>(null);
+  const [triageSource, setTriageSource] = useState<'ai' | 'offline' | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const { entries: historyEntries, addEntry, removeEntry, clearAll } = useIncidentHistory();
@@ -70,6 +71,7 @@ export default function App() {
       setTimeout(() => {
         const fallback = findOfflineMatch(payload.text, payload.location);
         setTriageResult(fallback);
+        setTriageSource('offline');
         saveTriageToHistory(fallback, 'offline');
         setIsLoading(false);
       }, 400);
@@ -88,13 +90,19 @@ export default function App() {
       }
 
       const data: TriageResult = await response.json();
+      // The server tags every response with how it was produced, so we
+      // don't mislabel the server's own canned fallback (returned with a
+      // 200 when GEMINI_API_KEY isn't configured) as real AI output.
+      const source = response.headers.get('X-Triage-Source') === 'gemini' ? 'ai' : 'offline';
       setTriageResult(data);
-      saveTriageToHistory(data, 'ai');
+      setTriageSource(source);
+      saveTriageToHistory(data, source);
     } catch (err: unknown) {
       console.warn('Online triage request error, switching to local offline engine:', err);
       // Graceful fallback to verified offline rule engine
       const fallback = findOfflineMatch(payload.text, payload.location);
       setTriageResult(fallback);
+      setTriageSource('offline');
       saveTriageToHistory(fallback, 'offline');
     } finally {
       setIsLoading(false);
@@ -103,12 +111,14 @@ export default function App() {
 
   const handleReset = () => {
     setTriageResult(null);
+    setTriageSource(null);
     setAttachedImage(null);
   };
 
   const handleViewHistoryTriage = (entry: IncidentHistoryEntry) => {
     if (entry.triage) {
       setTriageResult(entry.triage);
+      setTriageSource(entry.triageSource ?? null);
       setActiveTab('triage');
     }
   };
@@ -174,6 +184,7 @@ export default function App() {
             {triageResult ? (
               <TriageResultCard
                 result={triageResult}
+                source={triageSource}
                 language={language}
                 onReset={handleReset}
                 onOpenQuickDial={() => setIsQuickDialOpen(true)}

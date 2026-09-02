@@ -83,6 +83,23 @@ describe('POST /api/triage', () => {
     expect(generateContent).not.toHaveBeenCalled();
   });
 
+  it('tags the server-side fallback response with X-Triage-Source: server-fallback', async () => {
+    const app = createApp({ apiKey: '' });
+    const res = await request(app).post('/api/triage').send({ text: 'headache' });
+
+    expect(res.headers['x-triage-source']).toBe('server-fallback');
+  });
+
+  it('tags a real Gemini response with X-Triage-Source: gemini', async () => {
+    const generateContent = vi.fn().mockResolvedValue({ text: JSON.stringify(VALID_TRIAGE_JSON) });
+    const { client } = makeMockGeminiClient(generateContent);
+    const app = createApp({ geminiClientFactory: () => client });
+
+    const res = await request(app).post('/api/triage').send({ text: 'chemical splash' });
+
+    expect(res.headers['x-triage-source']).toBe('gemini');
+  });
+
   it('calls the Gemini model with the correct config and returns its parsed JSON', async () => {
     const generateContent = vi.fn().mockResolvedValue({ text: JSON.stringify(VALID_TRIAGE_JSON) });
     const { client } = makeMockGeminiClient(generateContent);
