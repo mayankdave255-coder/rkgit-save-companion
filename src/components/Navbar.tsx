@@ -17,22 +17,22 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenQuickDial,
 }) => {
   return (
-    <header className="sticky top-0 z-40 w-full border-b-2 border-slate-800 bg-slate-950/95 backdrop-blur-md shadow-[0_4px_0_0_rgba(0,0,0,0.5)]">
+    <header className="sticky top-0 z-40 w-full border-b border-cyan-500/25 bg-[#060c16]/95 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
         {/* Brand & Logo */}
         <div className="flex items-center gap-3">
-          <div className="relative flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-br from-red-600 to-red-800 border-2 border-red-500 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0">
-            <Shield className="w-5 h-5 text-white" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-400 rounded-full animate-ping opacity-75" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-slate-950" />
+          <div className="relative flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-500 to-cyan-800 border border-cyan-300 flex-shrink-0 shadow-[0_0_16px_-2px_rgba(34,211,238,0.7)]">
+            <Shield className="w-5 h-5 text-[#04121a]" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full animate-ping opacity-75" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-[#060c16]" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="font-extrabold text-slate-100 text-base sm:text-lg tracking-tight">
-                RKGIT <span className="text-red-500">Safe</span>
+              <h1 className="font-hud font-extrabold text-slate-100 text-base sm:text-lg tracking-tight">
+                RKGIT <span className="text-cyan-400 hud-glow-text">Safe</span>
               </h1>
-              <span className="hidden xs:inline-block px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wider bg-red-950 text-red-400 border-2 border-red-800/80 shadow-[1px_1px_0px_0px_rgba(0,0,0,0.8)]">
-                BENTO MVP
+              <span className="hidden xs:inline-block px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wider bg-cyan-950/60 text-cyan-300 border border-cyan-500/40">
+                AI ACTIVE
               </span>
             </div>
             <p className="text-[11px] font-medium text-slate-400 hidden sm:block">
@@ -45,9 +45,9 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Connectivity Status Pill */}
           <div
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold border-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.6)] ${
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold border-2 ${
               isOnline
-                ? 'bg-slate-900 border-slate-800 text-slate-200'
+                ? 'bg-[#0a1524]/85 border-cyan-500/20 text-slate-200'
                 : 'bg-amber-950 border-amber-700 text-amber-300'
             }`}
             title={isOnline ? 'Online (Gemini Cloud Triage Active)' : 'Offline Mode (Local Cached Guides Active)'}
@@ -70,13 +70,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Language Switcher */}
-          <div className="flex items-center bg-slate-900 rounded-xl p-1 border-2 border-slate-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.6)]">
+          <div className="flex items-center bg-[#0a1524]/85 rounded-xl p-1 border-2 border-cyan-500/20">
             <button
               id="lang-btn-en"
               onClick={() => onLanguageChange('en')}
               className={`px-2.5 py-1 text-xs font-black rounded-lg transition cursor-pointer ${
                 language === 'en'
-                  ? 'bg-red-600 text-white shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]'
+                  ? 'hud-btn-primary'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -87,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => onLanguageChange('hi')}
               className={`px-2.5 py-1 text-xs font-black rounded-lg transition cursor-pointer flex items-center gap-1 ${
                 language === 'hi'
-                  ? 'bg-red-600 text-white shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]'
+                  ? 'hud-btn-primary'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -103,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             id="btn-emergency-quick-dial"
             onClick={onOpenQuickDial}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-red-600 hover:bg-red-500 active:translate-x-0.5 active:translate-y-0.5 text-white text-xs font-black shadow-[3px_3px_0px_0px_rgba(0,0,0,0.9)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.9)] transition-all cursor-pointer border-2 border-red-400"
+            className="hud-btn-danger flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl active:translate-x-0.5 active:translate-y-0.5 text-xs font-black transition-all cursor-pointer"
           >
             <PhoneCall className="w-3.5 h-3.5 animate-bounce" />
             <span className="tracking-wide">

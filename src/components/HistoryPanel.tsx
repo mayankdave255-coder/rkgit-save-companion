@@ -56,8 +56,8 @@ export const HistoryPanel: React.FC<HistoryPanelProps> = ({
 
   if (entries.length === 0) {
     return (
-      <div className="rounded-3xl bg-slate-900 border-2 border-slate-800 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.8)] p-10 flex flex-col items-center justify-center text-center gap-3">
-        <div className="w-14 h-14 rounded-2xl bg-slate-950 border-2 border-slate-800 flex items-center justify-center text-slate-500">
+      <div className="rounded-3xl bg-[#0a1524]/85 border-2 border-cyan-500/20 p-10 flex flex-col items-center justify-center text-center gap-3">
+        <div className="w-14 h-14 rounded-2xl bg-[#060c16] border-2 border-cyan-500/20 flex items-center justify-center text-slate-500">
           <Inbox className="w-6 h-6" />
         </div>
         <h3 className="text-sm font-extrabold text-slate-200">
@@ -74,9 +74,9 @@ export const HistoryPanel: React.FC<HistoryPanelProps> = ({
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between p-4 sm:p-5 rounded-3xl bg-slate-900 border-2 border-slate-800 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)]">
+      <div className="flex items-center justify-between p-4 sm:p-5 rounded-3xl bg-[#0a1524]/85 border-2 border-cyan-500/20">
         <div className="flex items-center gap-2.5">
-          <History className="w-5 h-5 text-red-500" />
+          <History className="w-5 h-5 text-cyan-400" />
           <div>
             <h2 className="text-sm sm:text-base font-black text-slate-100">
               {language === 'hi' ? 'घटना इतिहास' : 'Incident History'}
@@ -90,7 +90,7 @@ export const HistoryPanel: React.FC<HistoryPanelProps> = ({
         </div>
         <button
           onClick={onClearAll}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-red-950 text-slate-300 hover:text-red-300 text-xs font-bold border-2 border-slate-700 hover:border-red-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.6)] transition cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-red-950 text-slate-300 hover:text-red-300 text-xs font-bold border-2 border-cyan-500/25 hover:border-red-800 transition cursor-pointer"
         >
           <Trash2 className="w-3.5 h-3.5" />
           <span>{language === 'hi' ? 'सभी हटाएं' : 'Clear All'}</span>
@@ -103,24 +103,24 @@ export const HistoryPanel: React.FC<HistoryPanelProps> = ({
           return (
             <div
               key={entry.id}
-              className="rounded-2xl bg-slate-900 border-2 border-slate-800 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.6)] overflow-hidden"
+              className="rounded-2xl bg-[#0a1524]/85 border-2 border-cyan-500/20 overflow-hidden"
             >
               <button
                 onClick={() => setExpandedId(isExpanded ? null : entry.id)}
-                className="w-full p-4 flex items-center justify-between gap-3 cursor-pointer hover:bg-slate-950/60 transition text-left"
+                className="w-full p-4 flex items-center justify-between gap-3 cursor-pointer hover:bg-[#060c16]/60 transition text-left"
               >
                 <div className="flex items-center gap-3 min-w-0">
                   <div
                     className={`w-9 h-9 rounded-xl border-2 flex items-center justify-center flex-shrink-0 ${
                       entry.kind === 'sos'
                         ? 'bg-red-950 border-red-800 text-red-400'
-                        : 'bg-slate-950 border-slate-800 text-slate-300'
+                        : 'bg-[#060c16] border-cyan-500/20 text-slate-300'
                     }`}
                   >
                     {entry.kind === 'sos' ? (
                       <Siren className="w-4 h-4" />
                     ) : entry.triageSource === 'ai' ? (
-                      <Sparkles className="w-4 h-4 text-red-400" />
+                      <Sparkles className="w-4 h-4 text-cyan-400" />
                     ) : (
                       <WifiOff className="w-4 h-4 text-amber-400" />
                     )}
@@ -157,11 +157,11 @@ export const HistoryPanel: React.FC<HistoryPanelProps> = ({
               </button>
 
               {isExpanded && (
-                <div className="px-4 pb-4 pt-1 border-t-2 border-slate-800 space-y-3">
+                <div className="px-4 pb-4 pt-1 border-t-2 border-cyan-500/20 space-y-3">
                   {entry.kind === 'sos' && entry.sos && (
                     <>
                       <div className="flex items-start gap-2 text-xs text-slate-300 font-medium">
-                        <MapPin className="w-3.5 h-3.5 text-red-400 flex-shrink-0 mt-0.5" />
+                        <MapPin className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0 mt-0.5" />
                         <span>{entry.sos.locationLabel}</span>
                       </div>
                       {entry.sos.mapsUrl && (
@@ -189,14 +189,14 @@ export const HistoryPanel: React.FC<HistoryPanelProps> = ({
                       </p>
                       <button
                         onClick={() => onViewTriage(entry)}
-                        className="text-xs font-black text-red-400 hover:text-red-300 transition"
+                        className="text-xs font-black text-cyan-400 hover:text-cyan-300 transition"
                       >
                         {language === 'hi' ? 'पूरी रिपोर्ट देखें →' : 'View full report →'}
                       </button>
                     </>
                   )}
 
-                  <div className="pt-2 border-t border-slate-800/70 flex justify-end">
+                  <div className="pt-2 border-t border-cyan-500/20 flex justify-end">
                     <button
                       onClick={() => onRemove(entry.id)}
                       className="flex items-center gap-1 text-[11px] font-bold text-slate-500 hover:text-red-400 transition"

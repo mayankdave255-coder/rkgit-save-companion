@@ -171,7 +171,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-red-900 selection:text-red-100">
+    <div className="min-h-screen bg-[#060c16] text-slate-100 flex flex-col font-sans selection:bg-red-900 selection:text-red-100">
       {/* Top Navigation */}
       <Navbar
         language={language}
@@ -190,7 +190,7 @@ export default function App() {
 
       {/* Offline Mode Alert Ribbon */}
       {!isOnline && (
-        <div className="bg-amber-950/90 border-b-2 border-amber-800 px-4 py-2.5 text-amber-200 text-xs flex items-center justify-between gap-3 sticky top-28 z-20 shadow-[0_4px_0_0_rgba(0,0,0,0.6)]">
+        <div className="bg-amber-950/90 border-b-2 border-amber-800 px-4 py-2.5 text-amber-200 text-xs flex items-center justify-between gap-3 sticky top-28 z-20">
           <div className="flex items-center gap-2 max-w-7xl mx-auto w-full">
             <WifiOff className="w-4 h-4 text-amber-400 flex-shrink-0" />
             <p className="font-medium">
@@ -209,7 +209,7 @@ export default function App() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8 pb-28">
         {/* Error Notification if any */}
         {errorMessage && (
-          <div className="p-4 rounded-2xl bg-red-950/80 border-2 border-red-800 text-red-200 text-xs flex items-center gap-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)]">
+          <div className="p-4 rounded-2xl bg-red-950/80 border-2 border-red-800 text-red-200 text-xs flex items-center gap-3">
             <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
             <span className="font-bold">{errorMessage}</span>
           </div>
@@ -265,10 +265,10 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t-2 border-slate-900 bg-slate-950 py-8 px-4 text-center text-xs text-slate-500">
+      <footer className="border-t-2 border-cyan-500/10 bg-[#060c16] py-8 px-4 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.9)] animate-pulse" />
             <span className="font-extrabold text-slate-300">RKGIT Safe Companion PWA</span>
           </div>
           <p className="text-xs text-slate-400 font-medium">
@@ -278,7 +278,7 @@ export default function App() {
           </p>
           <button
             onClick={() => setIsQuickDialOpen(true)}
-            className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-red-400 font-bold border-2 border-slate-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.6)] active:translate-x-0.5 active:translate-y-0.5 transition cursor-pointer"
+            className="px-3 py-1.5 rounded-xl bg-[#0a1524]/85 hover:bg-slate-800 text-red-400 font-bold border-2 border-cyan-500/20 active:translate-x-0.5 active:translate-y-0.5 transition cursor-pointer"
           >
             {language === 'hi' ? 'आपातकालीन सहायता' : 'Campus Emergency Contacts'}
           </button>

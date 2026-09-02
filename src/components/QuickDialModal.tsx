@@ -87,11 +87,11 @@ export const QuickDialModal: React.FC<QuickDialModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-3 sm:p-4 overflow-y-auto">
-      <div className="relative w-full max-w-2xl rounded-3xl bg-slate-900 border-2 border-slate-700 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.95)] overflow-hidden my-auto max-h-[90vh] flex flex-col">
+      <div className="relative w-full max-w-2xl rounded-3xl bg-[#0a1524]/85 border-2 border-cyan-500/25 overflow-hidden my-auto max-h-[90vh] flex flex-col">
         {/* Header */}
-        <div className="p-4 sm:p-5 bg-gradient-to-r from-red-950/80 via-slate-900 to-slate-900 border-b-2 border-slate-800 flex items-center justify-between">
+        <div className="p-4 sm:p-5 bg-gradient-to-r from-red-950/80 via-slate-900 to-slate-900 border-b-2 border-cyan-500/20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-2xl bg-red-600/20 border-2 border-red-500/40 flex items-center justify-center text-red-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)]">
+            <div className="w-11 h-11 rounded-2xl bg-red-600/20 border-2 border-red-500/40 flex items-center justify-center text-red-400">
               <PhoneCall className="w-5 h-5 animate-pulse" />
             </div>
             <div>
@@ -105,14 +105,14 @@ export const QuickDialModal: React.FC<QuickDialModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white border-2 border-slate-700 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] transition cursor-pointer"
+            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white border-2 border-cyan-500/25 transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Location Dispatch Banner */}
-        <div className="m-4 p-3.5 rounded-2xl bg-red-950/40 border-2 border-red-800/80 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.6)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="m-4 p-3.5 rounded-2xl bg-red-950/40 border-2 border-red-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-start gap-2.5">
             <MapPin className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
             <div>
@@ -126,7 +126,7 @@ export const QuickDialModal: React.FC<QuickDialModalProps> = ({
           </div>
           <button
             onClick={handleShareLocation}
-            className="flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-red-600 hover:bg-red-500 active:translate-x-0.5 active:translate-y-0.5 text-white text-xs font-extrabold border-2 border-red-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] transition flex-shrink-0 cursor-pointer"
+            className="flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-red-600 hover:bg-red-500 active:translate-x-0.5 active:translate-y-0.5 text-white text-xs font-extrabold border-2 border-red-400 transition flex-shrink-0 cursor-pointer"
           >
             {copiedLocation ? (
               <>
@@ -143,7 +143,7 @@ export const QuickDialModal: React.FC<QuickDialModalProps> = ({
         </div>
 
         {/* Category Filters */}
-        <div className="px-4 pb-3 border-b-2 border-slate-800 flex items-center gap-2 overflow-x-auto scrollbar-none">
+        <div className="px-4 pb-3 border-b-2 border-cyan-500/20 flex items-center gap-2 overflow-x-auto scrollbar-none">
           {[
             { id: 'all', label: language === 'hi' ? 'सभी नंबर' : 'All Contacts' },
             { id: 'security', label: language === 'hi' ? 'सुरक्षा' : 'Security' },
@@ -157,8 +157,8 @@ export const QuickDialModal: React.FC<QuickDialModalProps> = ({
               onClick={() => setSelectedCategory(cat.id)}
               className={`px-3 py-1.5 rounded-xl text-xs font-extrabold whitespace-nowrap transition-all cursor-pointer border-2 ${
                 selectedCategory === cat.id
-                  ? 'bg-red-600 border-red-400 text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)]'
-                  : 'bg-slate-950 border-slate-800 text-slate-300 hover:bg-slate-800 shadow-[1px_1px_0px_0px_rgba(0,0,0,0.6)]'
+                  ? 'bg-red-600 border-red-400 text-white'
+                  : 'bg-[#060c16] border-cyan-500/20 text-slate-300 hover:bg-slate-800'
               }`}
             >
               {cat.label}
@@ -171,10 +171,10 @@ export const QuickDialModal: React.FC<QuickDialModalProps> = ({
           {filteredContacts.map((contact: EmergencyContact) => (
             <div
               key={contact.id}
-              className="p-4 rounded-2xl bg-slate-950 border-2 border-slate-800 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.6)] hover:border-slate-700 hover:-translate-y-0.5 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+              className="p-4 rounded-2xl bg-[#060c16] border-2 border-cyan-500/20 hover:border-cyan-500/25 hover:-translate-y-0.5 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3"
             >
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-slate-900 border-2 border-slate-800 flex items-center justify-center flex-shrink-0 shadow-[1px_1px_0px_0px_rgba(0,0,0,0.8)]">
+                <div className="w-10 h-10 rounded-2xl bg-[#0a1524]/85 border-2 border-cyan-500/20 flex items-center justify-center flex-shrink-0">
                   {getIcon(contact.icon)}
                 </div>
                 <div>
@@ -183,7 +183,7 @@ export const QuickDialModal: React.FC<QuickDialModalProps> = ({
                       {language === 'hi' ? contact.nameHi : contact.name}
                     </h3>
                     {(contact.badge || contact.badgeHi) && (
-                      <span className="px-2 py-0.5 rounded-lg text-[10px] font-black bg-red-950 border border-red-800 text-red-300 shadow-[1px_1px_0px_0px_rgba(0,0,0,0.8)]">
+                      <span className="px-2 py-0.5 rounded-lg text-[10px] font-black bg-red-950 border border-red-800 text-red-300">
                         {language === 'hi' ? contact.badgeHi : contact.badge}
                       </span>
                     )}
@@ -202,7 +202,7 @@ export const QuickDialModal: React.FC<QuickDialModalProps> = ({
               <div className="flex items-center gap-2 self-end sm:self-center flex-shrink-0">
                 <button
                   onClick={() => handleCopy(contact.phone, contact.id)}
-                  className="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border-2 border-slate-700 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] active:translate-x-0.5 active:translate-y-0.5 transition cursor-pointer"
+                  className="p-2.5 rounded-xl bg-[#0a1524]/85 hover:bg-slate-800 text-slate-300 hover:text-white border-2 border-cyan-500/25 active:translate-x-0.5 active:translate-y-0.5 transition cursor-pointer"
                   title={language === 'hi' ? 'नंबर कॉपी करें' : 'Copy number'}
                 >
                   {copiedId === contact.id ? (
@@ -213,7 +213,7 @@ export const QuickDialModal: React.FC<QuickDialModalProps> = ({
                 </button>
                 <a
                   href={`tel:${contact.phone}`}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 active:translate-x-0.5 active:translate-y-0.5 text-white text-xs font-black border-2 border-red-400 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.8)] transition cursor-pointer"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 active:translate-x-0.5 active:translate-y-0.5 text-white text-xs font-black border-2 border-red-400 transition cursor-pointer"
                 >
                   <PhoneCall className="w-3.5 h-3.5" />
                   <span>{contact.phone}</span>
@@ -224,7 +224,7 @@ export const QuickDialModal: React.FC<QuickDialModalProps> = ({
         </div>
 
         {/* Footer info */}
-        <div className="p-3.5 bg-slate-950 border-t-2 border-slate-800 flex items-center justify-between text-[11px] font-bold text-slate-400">
+        <div className="p-3.5 bg-[#060c16] border-t-2 border-cyan-500/20 flex items-center justify-between text-[11px] font-bold text-slate-400">
           <span>RKGIT Emergency Dispatch • Ghaziabad, UP</span>
           <span className="text-red-400">In critical danger dial 112 / 108</span>
         </div>

@@ -111,11 +111,11 @@ export const TriageForm: React.FC<TriageFormProps> = ({
   ];
 
   return (
-    <div className="rounded-3xl bg-slate-900 border-2 border-slate-800 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.8)] overflow-hidden h-full flex flex-col justify-between">
+    <div className="rounded-3xl bg-[#0a1524]/85 border-2 border-cyan-500/20 overflow-hidden h-full flex flex-col justify-between">
       {/* Top Banner */}
-      <div className="p-4 sm:p-5 bg-gradient-to-r from-red-950/60 via-slate-900 to-slate-900 border-b-2 border-slate-800 flex items-center justify-between">
+      <div className="p-4 sm:p-5 bg-gradient-to-r from-cyan-950/60 via-[#0a1524]/40 to-[#0a1524]/40 border-b-2 border-cyan-500/20 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-red-600/20 border-2 border-red-500/50 flex items-center justify-center text-red-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] flex-shrink-0">
+          <div className="w-10 h-10 rounded-2xl bg-cyan-500/15 border-2 border-cyan-400/50 flex items-center justify-center text-cyan-300 flex-shrink-0">
             <Sparkles className="w-5 h-5" />
           </div>
           <div>
@@ -144,7 +144,7 @@ export const TriageForm: React.FC<TriageFormProps> = ({
                   key={idx}
                   type="button"
                   onClick={() => handlePresetSelect(p.text, p.loc)}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-950 border-2 border-slate-800 hover:border-red-500 text-slate-300 hover:text-white text-xs font-bold whitespace-nowrap shadow-[2px_2px_0px_0px_rgba(0,0,0,0.6)] hover:shadow-[3px_3px_0px_0px_rgba(239,68,68,0.3)] hover:-translate-y-0.5 transition-all cursor-pointer"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#060c16] border-2 border-cyan-500/20 hover:border-cyan-400 text-slate-300 hover:text-white text-xs font-bold whitespace-nowrap hover:-translate-y-0.5 transition-all cursor-pointer"
                 >
                   {p.icon}
                   <span>{p.label}</span>
@@ -158,13 +158,13 @@ export const TriageForm: React.FC<TriageFormProps> = ({
             {/* Location Picker */}
             <div>
               <label className="block text-xs font-bold text-slate-300 mb-1 flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-red-400" />
+                <MapPin className="w-3.5 h-3.5 text-cyan-400" />
                 <span>{language === 'hi' ? 'आरकेजीआईटी परिसर स्थान' : 'RKGIT Campus Location'}</span>
               </label>
               <select
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                className="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-slate-200 focus:outline-none focus:border-red-500 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)] transition"
+                className="w-full bg-[#060c16] border-2 border-cyan-500/20 rounded-2xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-slate-200 focus:outline-none focus:border-cyan-400 transition"
               >
                 {RKGIT_CAMPUS_LOCATIONS.map((loc) => (
                   <option key={loc.id} value={loc.id}>
@@ -177,7 +177,7 @@ export const TriageForm: React.FC<TriageFormProps> = ({
             {/* Victim Details */}
             <div>
               <label className="block text-xs font-bold text-slate-300 mb-1 flex items-center gap-1">
-                <UserRound className="w-3.5 h-3.5 text-red-400" />
+                <UserRound className="w-3.5 h-3.5 text-cyan-400" />
                 <span>{language === 'hi' ? 'पीड़ित का विवरण' : 'Victim Profile'}</span>
               </label>
               <input
@@ -185,16 +185,16 @@ export const TriageForm: React.FC<TriageFormProps> = ({
                 value={victimAge}
                 onChange={(e) => setVictimAge(e.target.value)}
                 placeholder="e.g. Student (20 yrs) / Faculty / Worker"
-                className="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-slate-200 focus:outline-none focus:border-red-500 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)] transition"
+                className="w-full bg-[#060c16] border-2 border-cyan-500/20 rounded-2xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-slate-200 focus:outline-none focus:border-cyan-400 transition"
               />
             </div>
           </div>
 
           {/* Multimodal Photo Attachment Preview Box */}
           {attachedImage && (
-            <div className="relative rounded-2xl border-2 border-red-700/80 bg-slate-950 p-3 flex items-center justify-between gap-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.6)]">
+            <div className="relative rounded-2xl border-2 border-cyan-500/40 bg-[#060c16] p-3 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-slate-800 bg-black flex-shrink-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.6)]">
+                <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-cyan-500/20 bg-black flex-shrink-0">
                   <img
                     src={attachedImage}
                     alt="Injury thumbnail"
@@ -203,7 +203,7 @@ export const TriageForm: React.FC<TriageFormProps> = ({
                 </div>
                 <div>
                   <p className="text-xs font-extrabold text-slate-100 flex items-center gap-1.5">
-                    <ImageIcon className="w-3.5 h-3.5 text-red-400" />
+                    <ImageIcon className="w-3.5 h-3.5 text-cyan-400" />
                     <span>{language === 'hi' ? 'चोट/खतरे की फ़ोटो संलग्न है' : 'Multimodal Image Attached'}</span>
                   </p>
                   <p className="text-[11px] text-slate-400">
@@ -214,7 +214,7 @@ export const TriageForm: React.FC<TriageFormProps> = ({
               <button
                 type="button"
                 onClick={onClearImage}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-red-950 text-slate-400 hover:text-red-300 border border-slate-700 transition cursor-pointer"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-red-950 text-slate-400 hover:text-red-300 border border-cyan-500/25 transition cursor-pointer"
                 title="Remove image"
               >
                 <X className="w-4 h-4" />
@@ -239,7 +239,7 @@ export const TriageForm: React.FC<TriageFormProps> = ({
                     ? 'जैसे: केमिस्ट्री लैब में एसिड गिरा, सांस लेने में तकलीफ, हाथ में कट लग गया...'
                     : 'e.g., Burn from acid splash in lab, deep bleeding cut from machine, student fainting...'
                 }
-                className="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl p-3.5 pr-22 text-xs sm:text-sm text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-red-500 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)] transition resize-none"
+                className="w-full bg-[#060c16] border-2 border-cyan-500/20 rounded-2xl p-3.5 pr-22 text-xs sm:text-sm text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 transition resize-none"
               />
               {isRecording && (
                 <div className="absolute left-3.5 bottom-3 flex items-center gap-2 pointer-events-none">
@@ -265,8 +265,8 @@ export const TriageForm: React.FC<TriageFormProps> = ({
                   onClick={toggleRecording}
                   className={`p-2 rounded-xl border-2 transition-all cursor-pointer ${
                     isRecording
-                      ? 'bg-red-600 border-red-400 text-white animate-pulse shadow-[2px_2px_0px_0px_rgba(0,0,0,0.9)]'
-                      : 'bg-slate-800 border-slate-700 hover:bg-slate-700 text-slate-200 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.6)]'
+                      ? 'bg-red-600 border-red-400 text-white animate-pulse'
+                      : 'bg-slate-800 border-cyan-500/25 hover:bg-slate-700 text-slate-200'
                   }`}
                   title={isRecording ? 'Listening (Click to stop)' : 'Voice input (Speak symptom)'}
                 >
@@ -279,8 +279,8 @@ export const TriageForm: React.FC<TriageFormProps> = ({
                   onClick={onOpenCamera}
                   className={`p-2 rounded-xl border-2 transition-all cursor-pointer ${
                     attachedImage
-                      ? 'bg-red-950 border-red-700 text-red-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)]'
-                      : 'bg-slate-800 border-slate-700 hover:bg-slate-700 text-slate-200 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.6)]'
+                      ? 'bg-cyan-950/60 border-cyan-500/40 text-cyan-300'
+                      : 'bg-slate-800 border-cyan-500/25 hover:bg-slate-700 text-slate-200'
                   }`}
                   title="Capture or upload photo"
                 >
@@ -296,7 +296,7 @@ export const TriageForm: React.FC<TriageFormProps> = ({
           id="btn-evaluate-triage"
           type="submit"
           disabled={isLoading || (!description.trim() && !attachedImage)}
-          className="w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-gradient-to-r from-red-600 via-red-600 to-red-700 hover:from-red-500 hover:to-red-600 active:translate-x-0.5 active:translate-y-0.5 text-white text-sm font-black border-2 border-red-400 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.9)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.9)] transition-all disabled:opacity-40 disabled:pointer-events-none cursor-pointer mt-2"
+          className="hud-btn-primary w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl active:translate-x-0.5 active:translate-y-0.5 text-sm font-black transition-all disabled:opacity-40 disabled:pointer-events-none cursor-pointer mt-2"
         >
           {isLoading ? (
             <>

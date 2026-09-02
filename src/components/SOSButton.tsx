@@ -123,7 +123,7 @@ export const SOSButton: React.FC<SOSButtonProps> = ({ language, onSOSSent }) => 
       <button
         onClick={() => setIsOpen(true)}
         aria-label="Send SOS Emergency Alert"
-        className="fixed z-40 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] right-4 sm:right-6 flex items-center gap-2 pl-3.5 pr-4 py-3.5 rounded-full bg-red-600 hover:bg-red-500 active:translate-y-0.5 text-white border-2 border-red-400 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.9)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.9)] transition-all cursor-pointer"
+        className="hud-btn-danger fixed z-40 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] right-4 sm:right-6 flex items-center gap-2 pl-3.5 pr-4 py-3.5 rounded-full active:translate-y-0.5 transition-all cursor-pointer"
       >
         <span className="relative flex items-center justify-center w-6 h-6">
           <span className="absolute inline-flex h-full w-full rounded-full bg-white/40 animate-ping" />
@@ -136,11 +136,11 @@ export const SOSButton: React.FC<SOSButtonProps> = ({ language, onSOSSent }) => 
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-3 sm:p-4 overflow-y-auto">
-          <div className="relative w-full max-w-lg rounded-3xl bg-slate-900 border-2 border-red-700/70 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.95)] overflow-hidden my-auto max-h-[92vh] flex flex-col">
+          <div className="relative w-full max-w-lg rounded-3xl bg-[#0a1524]/85 border-2 border-red-700/70 overflow-hidden my-auto max-h-[92vh] flex flex-col">
             {/* Header */}
-            <div className="p-4 sm:p-5 bg-gradient-to-r from-red-950/90 via-slate-900 to-slate-900 border-b-2 border-slate-800 flex items-center justify-between">
+            <div className="p-4 sm:p-5 bg-gradient-to-r from-red-950/90 via-slate-900 to-slate-900 border-b-2 border-cyan-500/20 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-2xl bg-red-600/20 border-2 border-red-500/50 flex items-center justify-center text-red-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)]">
+                <div className="w-11 h-11 rounded-2xl bg-red-600/20 border-2 border-red-500/50 flex items-center justify-center text-red-400">
                   <Siren className="w-5 h-5 animate-pulse" />
                 </div>
                 <div>
@@ -156,7 +156,7 @@ export const SOSButton: React.FC<SOSButtonProps> = ({ language, onSOSSent }) => 
               </div>
               <button
                 onClick={handleClose}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white border-2 border-slate-700 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] transition cursor-pointer"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white border-2 border-cyan-500/25 transition cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -166,7 +166,7 @@ export const SOSButton: React.FC<SOSButtonProps> = ({ language, onSOSSent }) => 
               {!sentRecord ? (
                 <>
                   {/* Location status */}
-                  <div className="p-4 rounded-2xl bg-slate-950 border-2 border-slate-800 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.6)] space-y-2">
+                  <div className="p-4 rounded-2xl bg-[#060c16] border-2 border-cyan-500/20 space-y-2">
                     <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wide text-slate-200">
                       <MapPin className="w-4 h-4 text-red-400" />
                       <span>{language === 'hi' ? 'स्थान की स्थिति' : 'Location Status'}</span>
@@ -197,7 +197,7 @@ export const SOSButton: React.FC<SOSButtonProps> = ({ language, onSOSSent }) => 
                   </div>
 
                   {/* Hold to confirm */}
-                  <div className="p-5 rounded-2xl bg-red-950/30 border-2 border-red-800/70 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.6)] flex flex-col items-center gap-3">
+                  <div className="p-5 rounded-2xl bg-red-950/30 border-2 border-red-800/70 flex flex-col items-center gap-3">
                     <p className="text-xs text-center text-red-200 font-bold">
                       {language === 'hi'
                         ? 'भेजने के लिए बटन को 2 सेकंड दबाए रखें (गलती से चालू होने से बचाव हेतु)'
@@ -225,7 +225,7 @@ export const SOSButton: React.FC<SOSButtonProps> = ({ language, onSOSSent }) => 
                           style={{ transition: 'stroke-dashoffset 30ms linear' }}
                         />
                       </svg>
-                      <div className="w-20 h-20 rounded-full bg-red-600 border-4 border-red-400 flex flex-col items-center justify-center text-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.9)]">
+                      <div className="w-20 h-20 rounded-full bg-red-600 border-4 border-red-400 flex flex-col items-center justify-center text-white">
                         {isDispatching ? (
                           <Loader2 className="w-6 h-6 animate-spin" />
                         ) : (
@@ -243,7 +243,7 @@ export const SOSButton: React.FC<SOSButtonProps> = ({ language, onSOSSent }) => 
               ) : (
                 <>
                   {/* Sent confirmation */}
-                  <div className="p-4 rounded-2xl bg-emerald-950/40 border-2 border-emerald-700/80 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.6)] flex items-start gap-3">
+                  <div className="p-4 rounded-2xl bg-emerald-950/40 border-2 border-emerald-700/80 flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-xs font-black text-emerald-300 uppercase tracking-wide">
@@ -262,7 +262,7 @@ export const SOSButton: React.FC<SOSButtonProps> = ({ language, onSOSSent }) => 
                       href={sentRecord.mapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 p-3 rounded-2xl bg-slate-950 border-2 border-slate-800 text-xs font-bold text-blue-300 hover:border-blue-600 transition shadow-[2px_2px_0px_0px_rgba(0,0,0,0.6)]"
+                      className="flex items-center gap-2 p-3 rounded-2xl bg-[#060c16] border-2 border-cyan-500/20 text-xs font-bold text-blue-300 hover:border-blue-600 transition"
                     >
                       <MapPin className="w-4 h-4" />
                       <span>{language === 'hi' ? 'मानचित्र पर मेरा स्थान देखें' : 'View my live location on Google Maps'}</span>
@@ -273,10 +273,10 @@ export const SOSButton: React.FC<SOSButtonProps> = ({ language, onSOSSent }) => 
                     {primaryContacts.map((c) => (
                       <div
                         key={c.id}
-                        className="p-3.5 rounded-2xl bg-slate-950 border-2 border-slate-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.6)] flex items-center justify-between gap-2 flex-wrap"
+                        className="p-3.5 rounded-2xl bg-[#060c16] border-2 border-cyan-500/20 flex items-center justify-between gap-2 flex-wrap"
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
-                          <div className="w-8 h-8 rounded-xl bg-slate-900 border-2 border-slate-800 flex items-center justify-center flex-shrink-0 text-red-400">
+                          <div className="w-8 h-8 rounded-xl bg-[#0a1524]/85 border-2 border-cyan-500/20 flex items-center justify-center flex-shrink-0 text-red-400">
                             {c.category === 'medical' ? <HeartPulse className="w-4 h-4" /> : <ShieldAlert className="w-4 h-4" />}
                           </div>
                           <p className="text-xs font-bold text-slate-100 truncate">
@@ -286,14 +286,14 @@ export const SOSButton: React.FC<SOSButtonProps> = ({ language, onSOSSent }) => 
                         <div className="flex items-center gap-1.5 flex-shrink-0">
                           <a
                             href={`tel:${c.phone}`}
-                            className="p-2 rounded-xl bg-red-600 hover:bg-red-500 text-white border-2 border-red-400 shadow-[1px_1px_0px_0px_rgba(0,0,0,0.8)] transition"
+                            className="p-2 rounded-xl bg-red-600 hover:bg-red-500 text-white border-2 border-red-400 transition"
                             title="Call"
                           >
                             <PhoneCall className="w-3.5 h-3.5" />
                           </a>
                           <a
                             href={smsHref(c.phone)}
-                            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border-2 border-slate-700 shadow-[1px_1px_0px_0px_rgba(0,0,0,0.8)] transition"
+                            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border-2 border-cyan-500/25 transition"
                             title="SMS with location"
                           >
                             <MessageCircle className="w-3.5 h-3.5" />
@@ -307,7 +307,7 @@ export const SOSButton: React.FC<SOSButtonProps> = ({ language, onSOSSent }) => 
                     href={whatsappHref()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black border-2 border-emerald-400 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.8)] transition"
+                    className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black border-2 border-emerald-400 transition"
                   >
                     <MessageCircle className="w-4 h-4" />
                     <span>{language === 'hi' ? 'व्हाट्सएप पर लोकेशन शेयर करें' : 'Share location via WhatsApp'}</span>
@@ -315,7 +315,7 @@ export const SOSButton: React.FC<SOSButtonProps> = ({ language, onSOSSent }) => 
 
                   <button
                     onClick={handleClose}
-                    className="w-full p-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border-2 border-slate-700 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] transition"
+                    className="w-full p-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border-2 border-cyan-500/25 transition"
                   >
                     {language === 'hi' ? 'बंद करें' : 'Close'}
                   </button>

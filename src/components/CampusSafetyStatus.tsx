@@ -12,10 +12,10 @@ export const CampusSafetyStatus: React.FC<CampusSafetyStatusProps> = ({
   onOpenQuickDial,
 }) => {
   return (
-    <div className="rounded-3xl bg-slate-900 border-2 border-slate-800 p-5 sm:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.8)] space-y-4 h-full flex flex-col justify-between">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b-2 border-slate-800">
+    <div className="rounded-3xl bg-[#0a1524]/85 border-2 border-cyan-500/20 p-5 sm:p-6 space-y-4 h-full flex flex-col justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b-2 border-cyan-500/20">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-red-600/20 border-2 border-red-500/40 flex items-center justify-center text-red-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] flex-shrink-0">
+          <div className="w-10 h-10 rounded-2xl bg-cyan-500/15 border-2 border-cyan-500/40 flex items-center justify-center text-cyan-300 flex-shrink-0">
             <Shield className="w-5 h-5" />
           </div>
           <div>
@@ -32,18 +32,18 @@ export const CampusSafetyStatus: React.FC<CampusSafetyStatusProps> = ({
 
         <button
           onClick={onOpenQuickDial}
-          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:translate-x-0.5 active:translate-y-0.5 text-slate-200 text-xs font-bold self-start sm:self-center border-2 border-slate-700 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] transition-all cursor-pointer"
+          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:translate-x-0.5 active:translate-y-0.5 text-slate-200 text-xs font-bold self-start sm:self-center border-2 border-cyan-500/25 transition-all cursor-pointer"
         >
-          <Phone className="w-3.5 h-3.5 text-red-400" />
+          <Phone className="w-3.5 h-3.5 text-cyan-400" />
           <span>{language === 'hi' ? 'त्वरित डायल' : 'Quick Dispatch'}</span>
         </button>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 flex-1">
         {/* On-Campus Dispensary */}
-        <div className="p-4 rounded-2xl bg-slate-950 border-2 border-slate-800 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.6)] hover:border-red-500/50 hover:-translate-y-0.5 transition-all flex flex-col justify-between gap-3">
+        <div className="p-4 rounded-2xl bg-[#060c16] border-2 border-cyan-500/20 hover:border-red-500/50 hover:-translate-y-0.5 transition-all flex flex-col justify-between gap-3">
           <div className="flex items-start gap-3">
-            <div className="p-2.5 rounded-xl bg-red-950/70 border-2 border-red-800/60 text-red-400 shadow-[1px_1px_0px_0px_rgba(0,0,0,0.6)]">
+            <div className="p-2.5 rounded-xl bg-red-950/70 border-2 border-red-800/60 text-red-400">
               <HeartPulse className="w-4 h-4" />
             </div>
             <div>
@@ -62,9 +62,9 @@ export const CampusSafetyStatus: React.FC<CampusSafetyStatusProps> = ({
         </div>
 
         {/* Security Gates */}
-        <div className="p-4 rounded-2xl bg-slate-950 border-2 border-slate-800 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.6)] hover:border-slate-700 hover:-translate-y-0.5 transition-all flex flex-col justify-between gap-3">
+        <div className="p-4 rounded-2xl bg-[#060c16] border-2 border-cyan-500/20 hover:border-cyan-500/25 hover:-translate-y-0.5 transition-all flex flex-col justify-between gap-3">
           <div className="flex items-start gap-3">
-            <div className="p-2.5 rounded-xl bg-slate-900 border-2 border-slate-800 text-red-400 shadow-[1px_1px_0px_0px_rgba(0,0,0,0.6)]">
+            <div className="p-2.5 rounded-xl bg-[#0a1524]/85 border-2 border-cyan-500/20 text-cyan-300">
               <Shield className="w-4 h-4" />
             </div>
             <div>
@@ -76,16 +76,16 @@ export const CampusSafetyStatus: React.FC<CampusSafetyStatusProps> = ({
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-1 text-[10px] text-slate-300 font-bold bg-slate-900 px-2 py-1 rounded-lg border border-slate-800">
-            <MapPin className="w-3 h-3 text-red-400" />
+          <div className="flex items-center gap-1 text-[10px] text-slate-300 font-bold bg-[#0a1524]/85 px-2 py-1 rounded-lg border border-cyan-500/20">
+            <MapPin className="w-3 h-3 text-cyan-400" />
             <span>Ext. 224 / 225 • Barrier Dispatch</span>
           </div>
         </div>
 
         {/* Nearest External Hospital */}
-        <div className="p-4 rounded-2xl bg-slate-950 border-2 border-slate-800 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.6)] hover:border-blue-500/50 hover:-translate-y-0.5 transition-all flex flex-col justify-between gap-3">
+        <div className="p-4 rounded-2xl bg-[#060c16] border-2 border-cyan-500/20 hover:border-blue-500/50 hover:-translate-y-0.5 transition-all flex flex-col justify-between gap-3">
           <div className="flex items-start gap-3">
-            <div className="p-2.5 rounded-xl bg-blue-950/70 border-2 border-blue-800/60 text-blue-400 shadow-[1px_1px_0px_0px_rgba(0,0,0,0.6)]">
+            <div className="p-2.5 rounded-xl bg-blue-950/70 border-2 border-blue-800/60 text-blue-400">
               <Hospital className="w-4 h-4" />
             </div>
             <div>
